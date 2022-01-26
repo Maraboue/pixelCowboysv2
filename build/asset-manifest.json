@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a0e7eb28.css",
+    "main.js": "/static/js/main.fb4cd037.js",
+    "static/js/787.1a0e9eef.chunk.js": "/static/js/787.1a0e9eef.chunk.js",
+    "static/media/normal.jpg": "/static/media/normal.d06d6a6b29d67004f2aa.jpg",
+    "static/media/Lone_Rider.mp3": "/static/media/Lone_Rider.25ce194e0a207e4f0a1c.mp3",
+    "static/media/moon.jpg": "/static/media/moon.57e762bb64628981f6d4.jpg",
+    "static/media/saloon.jpg": "/static/media/saloon.db39c5e7bc54ab1a1c1f.jpg",
+    "static/media/pxlSpaceCowboy.png": "/static/media/pxlSpaceCowboy.e309dd84bfb66e526dcc.png",
+    "static/media/pixelCowboy1.png": "/static/media/pixelCowboy1.e7492dc887d87a6c2c97.png",
+    "static/media/PressStart2P-vaV7.ttf": "/static/media/PressStart2P-vaV7.2ebf1a35a67b4271603e.ttf",
+    "static/media/527.png": "/static/media/527.624e43b606b93ae3e514.png",
+    "index.html": "/index.html",
+    "main.a0e7eb28.css.map": "/static/css/main.a0e7eb28.css.map",
+    "main.fb4cd037.js.map": "/static/js/main.fb4cd037.js.map",
+    "787.1a0e9eef.chunk.js.map": "/static/js/787.1a0e9eef.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a0e7eb28.css",
+    "static/js/main.fb4cd037.js"
+  ]
+}
