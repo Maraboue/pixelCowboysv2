@@ -3,14 +3,28 @@ import React from 'react';
 import * as THREE from 'three';
 import Typewriter from 'typewriter-effect';
 import NavigationBar from './components/navbar';
+import character from './components/character';
 
 import moon1 from './moon.jpg';
-import cowboy1 from './pixelCowboy1.png';
-import cowboySpace from './pxlSpaceCowboy.png';
+import cowboy1 from './assets/images/pixelCowboy1.png';
+import cowboySpace from './assets/images/pxlSpaceCowboy.png';
+
+import cowboy24 from './assets/images/24.png';
+import cowboy160 from './assets/images/160.png';
+import cowboy246 from './assets/images/246.png';
+import cowboy527 from './assets/images/1071.png';
+import cowboy585 from './assets/images/1080.png';
+import cowboy638 from './assets/images/638.png';
+
+
 import banner from './banner3.png';
-import cowboy527 from './527.png';
 import normal from './normal.jpg';
-import saloon from './saloon.jpg';
+import saloon from './assets/images/saloon.jpg';
+
+import discord from './assets/images/discord.png';
+import medium from './assets/images/medium.png';
+import twitter from './assets/images/twitter.png';
+
 import audio1 from './Lone_Rider.mp3'
 
 
@@ -34,7 +48,7 @@ camera.position.setX(-3);
 renderer.render(scene, camera);
 
 
-var stream = audio1 ;//"https://cdn.rawgit.com/ellenprobst/web-audio-api-with-Threejs/57582104/lib/TheWarOnDrugs.m4a";
+var stream = audio1 ;
 
 var audioLoader = new THREE.AudioLoader();
 var listener = new THREE.AudioListener();
@@ -54,20 +68,25 @@ pointLight.position.set(5, 5, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
+
+
+
+
 function addStar() {
+
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+  const material = new THREE.MeshStandardMaterial({ color: 0xd1d117, metalness:0.7});
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = Array(3)
     .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100));
+    .map(() => THREE.MathUtils.randFloatSpread(400));
 
   star.position.set(x, y, z);
-  //scene.add(star);
+  scene.add(star);
 }
 
-Array(200).fill().forEach(addStar);
+Array(100).fill().forEach(addStar);
 
 // Background
 
@@ -79,7 +98,8 @@ scene.background = spaceTexture;
 const moonTexture1 = new THREE.TextureLoader().load(cowboy527);
 //const normalTexture1 = new THREE.TextureLoader().load(normal);
 
-const cowboyTexture1 = new THREE.TextureLoader().load(moon1);
+const moonTexture = new THREE.TextureLoader().load(moon1);
+
 
 const cowboy = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5),
 new THREE.MeshStandardMaterial({
@@ -88,6 +108,7 @@ new THREE.MeshStandardMaterial({
 }));
 
 //scene.add(cowboy);
+const normalTexture = new THREE.TextureLoader().load(normal);
 
 const cowboyTexture2 = new THREE.TextureLoader().load(cowboy1);
 
@@ -95,35 +116,72 @@ const cowboy2= new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasi
 
 scene.add(cowboy2);
 
-const cowboyTexture3 = new THREE.TextureLoader().load(cowboySpace);
+const cowboyTexture3 = new THREE.TextureLoader().load(cowboy24);
 
-const cowboy3 = new THREE.Mesh(new THREE.PlaneGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture3 }));
+const cowboy3 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture3 }));
 
 scene.add(cowboy3);
 
-const cowboyTexture4 = new THREE.TextureLoader().load(cowboySpace);
+const cowboyTexture4 = new THREE.TextureLoader().load(cowboy160);
 
-const cowboy4 = new THREE.Mesh(new THREE.PlaneGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture4 }));
+const cowboy4 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture4 }));
 
-scene.add(cowboy4);
+//scene.add(cowboy4);
+//scene.add(moon);
 
-const cowboyTexture5 = new THREE.TextureLoader().load(cowboySpace);
+const cowboyTexture5 = new THREE.TextureLoader().load(cowboy246);
 
-const cowboy5 = new THREE.Mesh(new THREE.PlaneGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture5 }));
+const cowboy5 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture5 }));
 
 scene.add(cowboy5);
 
-const cowboyTexture6 = new THREE.TextureLoader().load(cowboySpace);
+const cowboyTexture6 = new THREE.TextureLoader().load(cowboy527);
 
-const cowboy6 = new THREE.Mesh(new THREE.PlaneGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture6 }));
+const cowboy6 = new THREE.Mesh(  new THREE.SphereGeometry(3, 32, 32),
+new THREE.MeshStandardMaterial({
+  map: moonTexture,
+  normalMap: normalTexture,
+}));
+  
+  
+  //new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture6 }));
 
 scene.add(cowboy6);
+
+const cowboyTexture7 = new THREE.TextureLoader().load(cowboy638);
+
+const cowboy7 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture7 }));
+
+scene.add(cowboy7);
+
+const cowboyTexture8 = new THREE.TextureLoader().load(cowboy638);
+
+const cowboy8 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture8 }));
+
+scene.add(cowboy8);
+
+const cowboyTexture9 = new THREE.TextureLoader().load(cowboy638);
+
+const cowboy9 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture9 }));
+
+scene.add(cowboy9);
+
+const cowboyTexture10 = new THREE.TextureLoader().load(cowboy638);
+
+const cowboy10 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture10 }));
+
+scene.add(cowboy10);
+
+const cowboyTexture11 = new THREE.TextureLoader().load(cowboy638);
+
+const cowboy11 = new THREE.Mesh(new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture11 }));
+
+scene.add(cowboy11);
 
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load(moon1);
-const normalTexture = new THREE.TextureLoader().load(normal);
+//const normalTexture = new THREE.TextureLoader().load(normal);
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -135,26 +193,83 @@ const moon = new THREE.Mesh(
 
 scene.add(moon);
 
-moon.position.z = 55;
+const moon2= new THREE.Mesh(  new THREE.SphereGeometry(3, 32, 32),
+new THREE.MeshStandardMaterial({
+  map: moonTexture,
+  normalMap: normalTexture,
+}));
+
+scene.add(moon2);
+
+const moon3= new THREE.Mesh(  new THREE.SphereGeometry(3, 32, 32),
+new THREE.MeshStandardMaterial({
+  map: moonTexture,
+  normalMap: normalTexture,
+}));
+  
+  
+  //new THREE.BoxGeometry(5, 5, 5), new THREE.MeshBasicMaterial({ map: cowboyTexture6 }));
+
+scene.add(moon3);
+
+
+moon.position.z = 65;
 moon.position.setX(-10);
+
+moon2.position.z = 155;
+moon2.position.setX(-22);
+
+moon3.position.z = 305;
+moon3.position.setX(-22);
+
 
 cowboy.position.z = -10;
 cowboy.position.x = 7;
 
 cowboy2.position.z = 0;
-cowboy2.position.setX(-2);
+cowboy2.position.setX(-25);
 
 cowboy3.position.z = 15;
-cowboy3.position.setX(-3);
+cowboy3.position.setX(33);
+cowboy3.position.setY(32);
+
 
 cowboy4.position.z = 25;
-cowboy4.position.setX(-5);
+cowboy4.position.setX(111);
+cowboy4.position.setY(5);
 
-cowboy5.position.z = 35;
-cowboy5.position.setX(-7);
+cowboy5.position.z = 135;
+cowboy5.position.setX(-6);
+cowboy4.position.setY(3);
 
 cowboy6.position.z = 45;
-cowboy6.position.setX(-7);
+cowboy6.position.setX(-233);
+cowboy6.position.setY(-11);
+
+cowboy7.position.z = 55;
+cowboy7.position.setX(22);
+cowboy7.position.setY(-5);
+
+cowboy8.position.z = 100;
+cowboy8.position.setX(-120);
+cowboy8.position.setY(-5);
+
+
+cowboy9.position.z = 35;
+cowboy9.position.setX(-150);
+cowboy9.position.setY(3);
+
+
+
+cowboy10.position.z = 155;
+cowboy10.position.setX(22);
+cowboy10.position.setY(3);
+
+
+
+cowboy11.position.z = 155;
+cowboy11.position.setX(-222);
+cowboy11.position.setY(3);
 
 // Scroll Animation
 
@@ -163,13 +278,36 @@ const moveCamera = function() {
   moon.rotation.x += 0.05;
   moon.rotation.y += 0.075;
   moon.rotation.z += 0.05;
+  moon2.rotation.x += 0.05;
+  moon2.rotation.y += 0.075;
+  moon2.rotation.z += 0.05;
+  moon3.rotation.y += 0.075;
+  moon3.rotation.z += 0.05;
 
-  cowboy.rotation.y += 0.01;
-  cowboy.rotation.z += 0.01;
+  cowboy2.rotation.y += 0.01;
+  cowboy2.rotation.z += 0.01;
+  cowboy3.rotation.y += 0.01;
+  cowboy3.rotation.z += 0.01;
+  cowboy4.rotation.y += 0.01;
+  cowboy4.rotation.z += 0.01;
+  cowboy5.rotation.y += 0.01;
+  cowboy5.rotation.z += 0.01;
+  cowboy6.rotation.y += 0.01;
+  cowboy6.rotation.z += 0.01;
+  cowboy7.rotation.y += 0.01;
+  cowboy7.rotation.z += 0.01;
+  cowboy8.rotation.y += 0.01;
+  cowboy8.rotation.z += 0.01;
+  cowboy9.rotation.y += 0.01;
+  cowboy9.rotation.z += 0.01;
+  cowboy10.rotation.y += 0.01;
+  cowboy10.rotation.z += 0.01;
+  cowboy11.rotation.y += 0.01;
+  cowboy11.rotation.z += 0.01;
 
-  camera.position.z = t * -0.01;
-  camera.position.x = t * -0.0002;
-  camera.rotation.y = t * -0.0002;
+  camera.position.z = t * -0.05;
+  camera.position.x = t * -0.0001;
+  camera.rotation.y = t * -0.00008;
 }
 
 document.body.onscroll = moveCamera;
@@ -179,9 +317,9 @@ moveCamera();
 
 const animate = function() {
   requestAnimationFrame(animate);
+ 
 
-
-  cowboy.rotation.x += 0.005;
+  cowboy.rotation.x += 0.0025;
 
   moon.rotation.x += 0.005;
 
@@ -189,6 +327,8 @@ const animate = function() {
 }
   animate();
 
+  
+ 
   }
 
 
@@ -220,17 +360,17 @@ render(){
 
       <section id="section-community">
         <h2>📜Community</h2>
-        <h3>Discord</h3>
+        <h3><img id="community-img" src={discord} alt="Discord "/></h3>
         <p>
          Join our Discord server, hang out with other cowboys, share your adventures, plan a heist or just stop by to have some whiskey. It all happens in the Saloon!🤠
        </p><center>
        <a  href="https://discord.gg/PfWgPDnq7F" class="btn btn-primary">Join Discord</a></center>
-        <h3>Twitter</h3>
+        <h3><img id="community-img" src={twitter} alt="Twitter "/></h3>
         <p>
          Follow us on Twitter to get fast updates and news about the Pixel Cowboys.🤠
        </p><center>
        <a  href="https://twitter.com/PixelCowboyz" class="btn btn-primary">Follow Twitter</a></center>
-        <h3>Medium</h3>
+        <h3><img id="community-img" src={medium} alt="Medium "/></h3>
         <p>
          Stay up to date by reading our blog over at Medium.🤠 
        </p><center>
@@ -262,7 +402,7 @@ Only <strong id="mint-date">7000</strong> Pixel Cowboys will ever be minted. Eac
       </section>
 
       <blockquote>
-        <p>You see, in this world, there’s two kinds of people, my friend – those who <strong>WAGMI</strong> , and those who <p id="nagmi">NAGMI</p>.<br/>-Clint Eastwood.</p>
+        <p>You see, in this world, there’s two kinds of people, my friend – those who <strong>WAGMI</strong> , and those who <p id="nagmi">NGMI</p>.<br/>-Clint Eastwood.</p>
       </blockquote>
 
       
@@ -270,9 +410,9 @@ Only <strong id="mint-date">7000</strong> Pixel Cowboys will ever be minted. Eac
         <h2>🗺️ Road Map</h2>
 
         <h3>Launch of the Pixel Cowboys</h3>
-        <p>⭐    ⭐     ⭐</p>  
-        <p> Begin the minting of the cowboys ✅</p>
-        <p>⭐    ⭐     ⭐</p>  
+  
+        <p>⭐    ⭐     ⭐<br/><br/> Begin the minting of the cowboys ✅<br/><br/> ⭐    ⭐     ⭐</p>
+  
         <h3>25 % Minted 🚀</h3>
         <p>The early supporters of the Pixel Cowboys Community Club will be rewarded with a <strong>FREE</strong> mint. This is because our vision is to build a <strong>community driven</strong> project where revenue is secondary and community comes first.
             After 1750 cowboys has been minted, we will start <strong>airdropping</strong> tokens and NFTs to the early holders. </p> 
@@ -301,7 +441,7 @@ Only <strong id="mint-date">7000</strong> Pixel Cowboys will ever be minted. Eac
       <img src={cowboy1} alt="Loading.."/>
 
             <h2>Clint Eastwood</h2>
-              <p>Clint Eastwood - the good. Here to build a community of gunslinger cowboys while searching for 
+              <p>Clint Eastwood - <strong>The Good</strong>. Here to build a community of gunslinger cowboys while searching for 
                 the unknown tomb of the last Pixel Cowboy!
             Hanging out in the saloon, you can catch him smoking a cigar while downing a smooth glass of whiskey.</p>  
         </div>
@@ -312,7 +452,7 @@ Only <strong id="mint-date">7000</strong> Pixel Cowboys will ever be minted. Eac
 
         <h2>Belle Starr</h2>
 
-        <p>Belle Starr, the "Bandit Queen". A true outlaw that is known for being a cattle thief and stealing horses. 
+        <p>Belle Starr, the <strong>Bandit Queen</strong>. A true outlaw that is known for being a cattle thief and stealing horses. 
           But little did they know that she was doing this for the Pixel Cowboys so they could ride into the sunset together. 
           Now it's done, and it's time to accomplish new crimes and gather more outlaws. Get ready and saddle up.
         </p>  
@@ -325,7 +465,7 @@ Only <strong id="mint-date">7000</strong> Pixel Cowboys will ever be minted. Eac
        <h2>Billy The Kid</h2>
 
         <p>
-          Billy The Kid, the infamous outlaw and gunslinger. He has traveled the west and wreaked havoc wherever he went. 
+          Billy The Kid, <strong>the Infamous</strong>. He has traveled the west and wreaked havoc wherever he went. 
           Nowadays you'll find him in the saloon with his trusty gunslingers and his gold bars. However, he may bring havoc once again
         </p>  
 </div>
@@ -336,7 +476,7 @@ Only <strong id="mint-date">7000</strong> Pixel Cowboys will ever be minted. Eac
 
       <h2>Harmonica</h2>
 
-      <p>Harmonica, the mysterious. He is driven by an obsession to take revenge on the whales who scamwicked him as a child, and create 
+      <p>Harmonica, <strong>the Mysterious</strong>. He is driven by an obsession to take revenge on the whales who scamwicked him as a child, and create 
         a community where the small cowboys get a piece of the big cake. They won't see it coming.
       </p> 
 </div>
